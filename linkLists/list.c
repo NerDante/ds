@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void list_init(List* list, (void)(*destroy)(void* data))
+void list_init(List* list, void(*destroy)(void* data))
 {
     list->size = 0;
     list->head = NULL;
@@ -15,7 +15,7 @@ void list_destroy(List* list)
     void* data;
 
     while (list->size > 0) {
-        if (list_rem_next(list, list->head, (void**)&data) == 0 && data != NULL) {
+        if (list_rem_next(list, NULL, (void**)&data) == 0 && data != NULL) {
             list->destroy(data);
         }
     }
@@ -32,7 +32,7 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
         return -1;
     }
 
-    new->data = data;
+    new->data = (void *)data;
 
     if (element == NULL) {// insert to head
         if (list_size(list) == 0) {
