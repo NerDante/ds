@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief init a list specified by list
+ *
+ * @param list: pointer to List
+ * @param destroy: func pointer used to destroy data
+ */
 void list_init(List* list, void(*destroy)(void* data))
 {
     list->size = 0;
@@ -10,6 +16,12 @@ void list_init(List* list, void(*destroy)(void* data))
     list->destroy = destroy;
 }
 
+/**
+ * @brief destroy all the list, every data will destroied by destroy func pass
+ *        to list_init()
+ *
+ * @param list : List *
+ */
 void list_destroy(List* list)
 {
     void* data;
@@ -23,6 +35,15 @@ void list_destroy(List* list)
     memset(list, 0, sizeof(List));
 }
 
+/**
+ * @brief insert after element to list
+ *
+ * @param list : List to handle
+ * @param element : if element is NULL, insert to head
+ * @param data : insert data
+ *
+ * @return 0:success, -1:fail
+ */
 int list_ins_next(List* list, ListElmt* element, const void* data)
 {
     ListElmt* new;
@@ -52,6 +73,15 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
     return 0;
 }
 
+/**
+ * @brief remove after element from list
+ *
+ * @param list : List to handle
+ * @param element : if element is NULL, will remove head
+ * @param data : hold the data of element, how to use depend to user
+ *
+ * @return  0:succes, -1:fail
+ */
 int list_rem_next(List* list, ListElmt* element, void** data)
 {
     ListElmt *old;

@@ -31,4 +31,5 @@ int list_rem_next(List *list, ListElmt *element, void **data);
 
 #define list_add_head(list, data) list_ins_next((list), NULL, (data))
 #define list_add_tail(list, data) list_ins_next((list), (list)->tail, (data))
+
 #endif /* __LIST_H__ */
