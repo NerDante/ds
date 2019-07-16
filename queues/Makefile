@@ -1,5 +1,5 @@
 build:
-	gcc test_queue.c list.c queue.c -o test
+	gcc test_queue.c ../linkLists/list.c queue.c -o test
 
 clean:
 	rm test
