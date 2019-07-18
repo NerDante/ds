@@ -32,7 +32,7 @@ int set_remove(Set* set, void** data)
     if (member == NULL)
         return -1;
 
-    return list_rem_next(set, priev, member);
+    return list_rem_next(set, prev, data);
 }
 
 int set_union(Set* setu, const Set* set1, const Set* set2)
@@ -44,9 +44,8 @@ int set_union(Set* setu, const Set* set1, const Set* set2)
     set_init(setu, set1->match, NULL);
 
     for (member = list_head(set1); member != NULL; member = list_next(member)) {
-        data = list_data(member)
-            ret
-            = list_ins_next(setu, list_head(setu), data);
+        data = list_data(member);
+        ret = list_ins_next(setu, list_head(setu), data);
         if (ret < 0) {
             set1->destroy(setu);
             return -1;
@@ -54,7 +53,7 @@ int set_union(Set* setu, const Set* set1, const Set* set2)
     }
 
     for (member = list_head(set2); member != NULL; member = list_next(member)) {
-        data = list_data(member)
+        data = list_data(member);
 
         if (set_is_member(setu, data))
         {
@@ -126,7 +125,7 @@ int set_is_subset(const Set* set1, const Set* set2)
 {
     ListElmt* member;
 
-    if(set_size(set1) > set_size(set2)){
+    if(list_size(set1) > list_size(set2)){
         return 0;
     }
 
@@ -143,7 +142,7 @@ int set_is_equal(const Set* set1, const Set* set2)
 {
     ListElmt* member;
 
-    if(set_size(set1) != set_size(set2)){
+    if(list_size(set1) != list_size(set2)){
         return 0;
     }
 
