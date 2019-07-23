@@ -4,7 +4,7 @@
 ## 参考书籍
 Mastering Algorithms with C
 
-## 实现结构
+## 数据结构
 - 链表
 - 栈
 - 队列
