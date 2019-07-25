@@ -1,7 +1,11 @@
 #include "chtbl.h"
 #include <stdlib.h>
 
-int chtbl_init(CHTbl* htbl, int buckets, int (*h)(const void* key), int (*match)(const void* key1, const void* key2), void (*destroy)(void* data))
+int chtbl_init(CHTbl* htbl, 
+               int buckets, 
+               int (*h)(const void* key), 
+               int (*match)(const void* key1, const void* key2), 
+               void (*destroy)(void* data))
 {
     htbl->table = malloc(sizeof(List) * buckets);
     if (NULL == htbl->table) {
@@ -84,7 +88,7 @@ int chtbl_lookup(const CHTbl* htbl, void** data)
 
     bucket = htbl->h(*data) % htbl->buckets;
 
-    for (member = htbl->table[bucket]->head; member != NULL; member = list_next(member)) {
+    for (member = list_head(&htbl->table[bucket]); member != NULL; member = list_next(member)) {
         if (htbl->match(*data, list_data(member)) == 0) {
             *data = list_data(member);
             return 0;

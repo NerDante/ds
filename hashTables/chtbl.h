@@ -1,3 +1,4 @@
+//chined hash table
 #ifndef __CHTBL_H__
 #define __CHTBL_H__
 
