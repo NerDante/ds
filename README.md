@@ -1,5 +1,5 @@
 ## 简介
-数据结构与算法学习中的练习代码
+常用数据结构与算法的实现
 
 ## 参考书籍
 Mastering Algorithms with C

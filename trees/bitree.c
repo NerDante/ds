@@ -25,14 +25,14 @@ int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data)
         if(tree->size > 0) {
             return -1;
         }
-        *position = tree->root;
+        position = &tree->root;
     }
     else{
         // normally allow insertion only at the end of branch
-        if(note_left(node) != NULL) {
+        if(node->left != NULL) {
             return -1;
         }
-        *position = node->left;
+        position = &node->left;
     }
 
     new = malloc(sizeof(BiTreeNode));
@@ -60,14 +60,14 @@ int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data)
         if(tree->size > 0) {
             return -1;
         }
-        *position = tree->root;
+        position = &tree->root;
     }
     else{
         // normally allow insertion only at the end of branch
-        if(note_left(node) != NULL) {
+        if(node->right != NULL) {
             return -1;
         }
-        *position = node->right;
+        position = &node->right;
     }
 
     new = malloc(sizeof(BiTreeNode));
