@@ -10,7 +10,7 @@ Mastering Algorithms with C
 - 队列(Queue)
 - 集合(Set)
 - 哈希表(Hash Table)
-- 树(Tree)
+- [树(Tree)](https://github.com/NerDante/ds/blob/master/trees/doc.md)
 - 图(Graph)
 
 ## 算法
