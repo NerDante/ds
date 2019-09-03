@@ -11,6 +11,7 @@ Mastering Algorithms with C
 - 集合(Set)
 - 哈希表(Hash Table)
 - [树(Tree)](https://github.com/NerDante/ds/blob/master/trees/doc.md)
+- 堆(Heap)
 - 图(Graph)
 
 ## 算法
