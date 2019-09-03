@@ -18,6 +18,7 @@ void data_destroy(void* data)
     free(data);
 }
 
+//top heavy
 int data_compare(const void *key1, const void *key2)
 {
     TestData *td1, *td2;
@@ -44,13 +45,19 @@ int main(int argc, char const* argv[])
 
     for(i = 0; i < 8; i++)
     {
-        heap_insert(&g_heap, (void *)&id[i]);
+        td = malloc(sizeof(TestData));
+        if(td == NULL)
+            exit(-1);
+        td->value = id[i];
+
+        heap_insert(&g_heap, (void *)td);
     }
 
     while((ret = heap_extract(&g_heap, (void **)&td)) == 0)
     {
         printf("%d ", td->value);
     }
+    printf("\n");
     
     return 0;
 }

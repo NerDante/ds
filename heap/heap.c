@@ -50,6 +50,10 @@ int heap_insert(Heap* heap, const void* data)
         temp = heap->tree[ppos];
         heap->tree[ppos] = heap->tree[ipos];
         heap->tree[ipos] = temp;
+
+        // move up one level
+        ipos = ppos;
+        ppos = heap_parent(ipos);
     }
 
     heap->size++;
