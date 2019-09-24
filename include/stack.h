@@ -1,7 +1,7 @@
 #ifndef __STACK_H__
 #define __STACK_H__
 
-#include "../linkLists/list.h"
+#include "list.h"
 
 // implement stacks as linked list
 typedef List Stack;

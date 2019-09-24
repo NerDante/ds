@@ -2,7 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void rotate_left(BiTreeNode** node)
+static void rotate_left(BiTreeNode** node);
+static void rotate_right(BiTreeNode** node);
+static void destroy_left(BisTree* tree, BiTreeNode* node);
+static void destroy_right(BisTree* tree, BiTreeNode* node);
+static int insert(BisTree* tree, BiTreeNode** node, const void* data, int* balanced);
+static int hide(BisTree* tree, BiTreeNode* node, const void* data);
+static int lookup(BisTree* tree, BiTreeNode* node, void** data);
+
+void rotate_left(BiTreeNode** node)
 {
     BiTreeNode *left, *grandchild;
 
@@ -43,7 +51,7 @@ static void rotate_left(BiTreeNode** node)
     return;
 }
 
-static void rotate_right(BiTreeNode** node)
+void rotate_right(BiTreeNode** node)
 {
     BiTreeNode *right, *grandchild;
 
@@ -82,7 +90,7 @@ static void rotate_right(BiTreeNode** node)
     return;
 }
 
-static void destroy_left(BisTree* tree, BiTreeNode* node)
+void destroy_left(BisTree* tree, BiTreeNode* node)
 {
     BiTreeNode** position;
 
@@ -112,7 +120,7 @@ static void destroy_left(BisTree* tree, BiTreeNode* node)
     tree->size--;
 }
 
-static void destroy_right(BisTree* tree, BiTreeNode* node)
+void destroy_right(BisTree* tree, BiTreeNode* node)
 {
     BiTreeNode** position;
 
@@ -140,7 +148,7 @@ static void destroy_right(BisTree* tree, BiTreeNode* node)
     tree->size--;
 }
 
-static int insert(BisTree* tree, BiTreeNode** node, const void* data, int* balanced)
+int insert(BisTree* tree, BiTreeNode** node, const void* data, int* balanced)
 {
     AvlNode* avl_data;
     int cmpval, retval;
@@ -241,7 +249,7 @@ static int insert(BisTree* tree, BiTreeNode** node, const void* data, int* balan
     return 0;
 }
 
-static int hide(BisTree* tree, BiTreeNode* node, const void* data)
+int hide(BisTree* tree, BiTreeNode* node, const void* data)
 {
     int cmpval, retval;
 
@@ -260,7 +268,7 @@ static int hide(BisTree* tree, BiTreeNode* node, const void* data)
     return retval;
 }
 
-static int lookup(BisTree* tree, BiTreeNode* node, void** data)
+int lookup(BisTree* tree, BiTreeNode* node, void** data)
 {
     int cmpval, retval;
 

@@ -2,7 +2,7 @@
 #ifndef __CHTBL_H__
 #define __CHTBL_H__
 
-#include "../linkLists/list.h"
+#include "list.h"
 
 typedef struct CHTBL_ {
     int buckets;
@@ -11,8 +11,9 @@ typedef struct CHTBL_ {
     int (*match)(const void *key1, const void *key2);
     void (*destroy)(void *data);
 
+    int size;
     List *table;
-}CHtbl;
+}CHTbl;
 
 #define chtbl_size(htbl) ((htbl)->size)
 int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key), int

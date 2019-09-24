@@ -1,6 +1,6 @@
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
-#include "../linkLists/list.h"
+#include "list.h"
 
 // implement queues as linked list
 typedef List Queue;

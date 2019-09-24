@@ -1,12 +1,13 @@
 #ifndef __SET_H__
 #define __SET_H__
 
-#include "../linkLists/list.h"
+#include "list.h"
 
 //implement sets as linked list
 typedef List Set;
 
-#define list_destroy set_destroy
+#define set_destroy list_destroy
+#define set_size(set) ((set)->size)
 //interfaces of sets
 void set_init(Set *set, int (*match)(const void *key1, const void *key2), void (*destroy)(void *data));
 int set_insert(Set *set, const void *data);

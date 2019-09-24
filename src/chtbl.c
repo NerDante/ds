@@ -1,5 +1,6 @@
-#include "chtbl.h"
 #include <stdlib.h>
+#include <string.h>
+#include "chtbl.h"
 
 int chtbl_init(CHTbl* htbl, 
                int buckets, 
@@ -13,7 +14,7 @@ int chtbl_init(CHTbl* htbl,
     }
 
     for (int i = 0; i < buckets; i++) {
-        list_init(&table[i], destroy);
+        list_init(&htbl->table[i], destroy);
     }
 
     htbl->h = h;
@@ -39,7 +40,7 @@ int chtbl_insert(CHTbl* htbl, const void* data)
 {
     int bucket;
     int ret;
-    void* temp = data;
+    void* temp = (void *)data;
 
     if (chtbl_lookup(htbl, &temp) == 0) {
         return 1; //do nothing
@@ -50,7 +51,7 @@ int chtbl_insert(CHTbl* htbl, const void* data)
         return -1;
     }
 
-    ret = list_ins_next(&htbl->table[bucket], htbl->table[bucket]->head, data);
+    ret = list_ins_next(&htbl->table[bucket], NULL, data);
     if (ret == 0) {
         htbl->size++;
     }
@@ -65,9 +66,9 @@ int chtbl_remove(CHTbl* htbl, void** data)
 
     bucket = htbl->h(*data) % htbl->buckets;
 
-    for (member = htbl->table[bucket]->head; member != NULL; member = list_next(member)) {
+    for (member = list_head(&htbl->table[bucket]); member != NULL; member = list_next(member)) {
         if (htbl->match(*data, list_data(member)) == 0) {
-            if (list_rem_next(&htbl->table[bucket], prev, member) == 0) {
+            if (list_rem_next(&htbl->table[bucket], prev, data) == 0) {
                 htbl->size--;
                 return 0;
             } else {

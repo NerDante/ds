@@ -1,9 +1,9 @@
 #ifndef __GRAPH_H__
 #define __GRAPH_H__
 
-#include "../linkLists/list.h"
-#include "../sets/set.h"
 #include <stdlib.h>
+#include "list.h"
+#include "set.h"
 
 typedef struct AdjList_ {
     void* vertex;
