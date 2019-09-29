@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 2.8)
 project(ds)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-include_directories(include)
+include_directories(include/ds)
 
-aux_source_directory(src SRC_FILES) 
+aux_source_directory(src/ds SRC_FILES) 
 
 add_executable(test_list test/test_list.c ${SRC_FILES})
 add_executable(test_bitree test/test_bitree.c ${SRC_FILES})
