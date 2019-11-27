@@ -42,7 +42,10 @@ int main(int argc, char const* argv[])
     print_data("original data");
 
     // insert sort
-    ret = insert_sort(unsortedData, 10, sizeof(int), compare);
+    // ret = insert_sort(unsortedData, 10, sizeof(int), compare);
+
+    // quick sort
+    ret = quick_sort(unsortedData, sizeof(int), 0, 9,compare);
     if(ret < 0)
     {
         printf("insert sort failed!!\n");
